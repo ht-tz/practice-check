@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+</head>
+<body>
+<ul>
+  <li>.</li>
+  <li>.</li>
+  <li>.</li>
+</ul>
+
+<script type="text/javascript">
+  // 补全代码
+  // 获取事件的根节点
+
+  let  root = document.getElementsByTagName('ul')[0]
+  //对根节点进行事件绑定, 回调函数有target, 判断哪个事件被点击
+  root.addEventListener('click', (event) => {
+    console.log(event)
+    //兼容性判断
+    let ev = event || window.event;
+    var target = ev.target || ev.srcElement;
+    //对子点的点击事件进行处理
+    if (target.nodeName.toLowerCase() === 'li') {
+      target.innerHTML+= '.';
+    }
+  })
+
+</script>
+</body>
+</html>

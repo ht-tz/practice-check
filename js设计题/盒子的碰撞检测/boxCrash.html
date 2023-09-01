@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 200px;
+        height: 100px;
+        position: absolute;
+    }
+
+    .box1 {
+        top: 50px;
+        background: pink;
+    }
+
+    .box2 {
+        top: 250px;
+        left: 200px;
+        background: rgb(27, 208, 24);
+    }
+</style>
+
+<body>
+
+    <div class="c1ontainer">
+        <div class="box box1">box1</div>
+        <div class="box box2">box2</div>
+    </div>
+
+    <script type="text/javascript">
+        const oBoxContainer = document.querySelector('.c1ontainer');
+        const allBox = document.querySelectorAll('.box')
+        oBoxContainer.addEventListener('mousedown', (e) => {
+            const { target } = e
+            const className = target.className.split(' ');
+            if (className.includes('box')) {
+                //鼠标位置相对于，目标边框的位置
+                target._x = e.clientX - target.offsetLeft;
+                target._y = e.clientY - target.offsetTop;
+                console.log(target.addEventListener);
+                //监听移动事件
+                window.addEventListener('mousemove', handleMouseMove, false);
+                oBoxContainer.addEventListener('mouseup', handleMouseUp, false);
+            }
+            function handleMouseMove(e) {
+                const x = e.clientX - target._x
+                const y = e.clientY - target._y
+
+                target.style.left = x + 'px'
+                target.style.top = y + 'px'
+
+                const isCollsion = collsionCheck(allBox)
+                console.log(isCollsion)
+            }
+
+            function handleMouseUp(e) {
+                window.removeEventListener('mousemove', handleMouseMove, false);
+                oBoxContainer.removeEventListener('mouseup', handleMouseUp, false)
+            }
+
+        }, false)
+
+        function collsionCheck(boxs) {
+            const box1 = boxs[0]
+            const box2 = boxs[1]
+            const box1Info = createBoxInfo(box1)
+            const box2Info = createBoxInfo(box2)
+
+            // 第一种，四个边点坐标的比较 
+            // 目标元素在左侧
+            // if (box1Info.x + box1Info.w < box2Info.x ||
+            //     box1Info.y + box1Info.h < box2Info.y ||
+            //     box1Info.x > box2Info.w + box2Info.x || box1.y > box2Info.h + box2Info.y
+
+            // ) {
+            //     return  false
+            // } else {
+            //     return true
+            // }
+
+            //第二种检测中心点的距离
+            let box1Center = getBoxCenter(box1Info)
+            let box2Center = getBoxCenter(box2Info)
+
+             const diff =  {
+                 x: Math.abs(box1Center.x - box2Center.x),
+                y:Math.abs(box1Center.y - box2Center.y)
+             }
+             if(diff.x <=(box1Info.w+ box2Info.w)/2 && diff.y <=(box1Info.h+ box2Info.h)/2) {
+                return true
+             } else {
+                return false
+             }
+        }
+
+        // 获取盒子
+        function getBoxCenter(box) {
+            return {
+                x: box.x + box.w/2,
+                y:box.y+box.h/2
+            }
+        }
+
+        //盒子信息创建
+        function createBoxInfo(box) {
+            return {
+                x: box.offsetLeft,
+                y: box.offsetTop,
+                w: box.offsetWidth,
+                h: box.offsetHeight
+            }
+        }
+
+    </script>
+</body>
+
+</html>
