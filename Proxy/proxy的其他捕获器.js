@@ -13,10 +13,10 @@ const objProxy = new Proxy(obj, {
     target[key] = newValue;
   },
 
-   // 监听in的捕获器
-   has: function(target, key) {
-    console.log(`监听到对象的${key}属性in操作`, target)
-    return key in target
+  // 监听in的捕获器
+  has: function (target, key) {
+    console.log(`监听到对象的${key}属性in操作`, target);
+    return key in target;
   },
 
   // 监听属性删除的操作
@@ -25,5 +25,5 @@ const objProxy = new Proxy(obj, {
     delete target[key];
   },
 });
- 'age' in objProxy
+"age" in objProxy;
 delete objProxy.age;

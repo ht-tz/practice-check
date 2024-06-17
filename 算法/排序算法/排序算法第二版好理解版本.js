@@ -15,24 +15,25 @@ function quickSort(arr, l, r) {
         while (arr[i] <= base && i < j) {
             i++
         }
+        //
         let temp = arr[i]
         arr[i] = arr[j]
         arr[j] = temp
     }
-    
+
     //相等之后, 交换基准元素和相遇位置的元素 i 
     //基准位置等于相遇元素
-     arr[l] = arr[i] 
+    arr[l] = arr[i]
     ///相遇位置等于基元素
-     arr[i] = base;
+    arr[i] = base;
 
-     //左边都小于arr[i]
-     //右边都大于arr[i]
-     quickSort(arr,l,i-1)
-     quickSort(arr,i+1,r)
-      
+    //左边都小于arr[i]
+    //右边都大于arr[i]
+    quickSort(arr, l, i - 1)
+    quickSort(arr, i + 1, r)
+
 }
- 
-let array = [1,23,433,2,324,23,232,223]
-quickSort(array,0,array.length - 1)
+
+let array = [3, 2, 1, 5, 6, 4]
+quickSort(array, 0, array.length - 1)
 console.log(array);

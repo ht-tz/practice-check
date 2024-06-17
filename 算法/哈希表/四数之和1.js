@@ -6,7 +6,6 @@ function fourSum(nums, target) {
 
         //剪枝处理, 推出循环
         if (nums[k] > target && nums[k] >= 0) break;
-
         if (k > 0 && nums[k] === nums[k - 1]) continue
         for (let i = k + 1; i < nums.length; i++) {
             //剪枝处理
@@ -16,7 +15,6 @@ function fourSum(nums, target) {
 
             let left = i + 1
             let right = nums.length - 1
-
 
             while (left < right) {
                 let sum = nums[k] + nums[i] + nums[left] + nums[right];
@@ -33,7 +31,6 @@ function fourSum(nums, target) {
                     right--
                 }
             }
-
         }
     }
     return  array

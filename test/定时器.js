@@ -1,18 +1,20 @@
-
-function mySetTimeout(fn,t,...args) {
-     timer = null 
-     timer  = setInterval(()=>{
-        fn([...args]);
-        clearInterval(timer)
-
-     },t,...args) 
+let obj = {
+    tabWidth: 4,
+    semi: false,
+    trailingComma: 'none',
+    singleQuote: true,
+    printWidth: 100,
+    arrowParens: 'avoid',
+    endOfLine: 'auto',
+    useTabs: false,
+    quoteProps: 'as-needed',
+    jsxSingleQuote: false,
+    jsxBracketSameLine: false,
+    rangeStart: 0,
+    rangeEnd: Infinity,
+    requirePragma: false,
+    insertPragma: false,
+    proseWrap: 'preserve',
+    htmlWhitespaceSensitivity: 'css'
 }
-
-mySetTimeout((x)=>{
-    console.log(x);
-},2000,5,8,9)
-
-
-// setTimeout((...args)=>{
-//     console.log(args)
-// },2000,1,2,34)
+console.log(JSON.stringify(obj))

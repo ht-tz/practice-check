@@ -1,4 +1,4 @@
-Array.prototype.forEach = function (fn,context) {
+Array.prototype.myForEach = function (fn,context) {
     let arr = Array.prototype.slice.call(this)
     for ( let i = 0; i <arr.length ; i++) {
         typeof fn==='function' &&  fn.call(context, arr[i],i,arr)

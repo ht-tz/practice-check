@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+      <div class="top-header"></div>
+
+    <div class="middle"></div>
+
+</div>
+</body>
+</html><!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>WebDemo_Test_Promise.all进阶学习</title>
+    <style>
+        body {
+            font-family: Verdana, Arial, "Microsoft YaHei", Helvetica, sans-serif;
+        }
+    </style>
+    <script>
+    </script>
+</head>
+
+<body>
+<div style="margin: 20px 0px 0px 10px;">提醒: 请打开控制台查看日志。</div>
+
+<script>
+    // js面试题: 使用 Promise.all 进行5个请求, 若其中一个失败了, 怎么让其他4个成功返回。
+    let p1 = Promise.resolve(1);
+    let p2 = Promise.resolve(2);
+    let p3 = Promise.resolve(3);
+    let p4 = Promise.resolve(4);
+    let p5 = Promise.reject("error");
+    let arr = [p1, p2, p3, p4, p5];
+    //let all = Promise.all(arr);
+    let all = Promise.all(
+        arr.map(
+            (promise) => promise.catch(
+                (e) => console.log("错误信息: " + e)
+            )
+        )
+    );
+    all.then(res => {
+        //console.log('res: ', JSON.stringify(res));
+        console.log('res: ', res);
+    }).catch(err => console.log('e: ', err));
+</script>
+</body>
+
+</html>

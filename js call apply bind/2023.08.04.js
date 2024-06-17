@@ -1,29 +1,16 @@
-function myNew(fn, ...args) {
-    //创建新对象
-    let obj = new Object()
-    //把构造函数的对象链接到新对象
-    Object.setPrototypeOf(obj, fn.prototype)
-    //改变this的指向
-    let res = fn.apply(obj, ...args)
-    return res instanceof Object ? res : obj
+/**
+
+ //es6 * call做了什么
+ * 1.将函数设置为对象属性
+ * 2.执行后删除这个对象
+ * 3.指定this到函数并传入给定参Ω数，执行函数。
+ * 如果不传入参数，默认指向window
+ */
+function myCall(thisArgs, ...args) {
+    thisArgs = thisArgs ? thisArgs : window
+    let symbol = Symbol('symbol')
+    thisArgs[symbol] = this
+    let res = thisArgs[symbol](...args)
+    delete thisArgs[symbol]
+    return res
 }
-
-//无参数
-
-function myNew2() {
-    let obj = new Object()
-    let fn =Array.prototype.shift.call(arguments)
-    console.log(typeof fn)
-    obj.__proto__ = fn.prototype
-    let res = fn.apply(obj, arguments)
-    return res instanceof Object?res:obj
-}
-
- function Person(name,age) {
-    this.name = name
-     this.age = age
- }
-
- let p1  = myNew2(Person,'xx',88)
-
-console.log(p1)

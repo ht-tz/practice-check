@@ -7,7 +7,6 @@ class TreeNode {
 }
 
 
-
 function swap(root) {
     let temp = root.left
     root.left = root.right
@@ -16,8 +15,10 @@ function swap(root) {
 
 function invertTree(root) {
     if (root === null) return root
-    const rightNode = root.right
-    root.right = invertTree(root.left)
-    root.left = invertTree(rightNode)
+    let temp = root.left
+    root.left = root.right
+    root.right = temp
+    invertTree(root.left)
+    invertTree(root.right)
     return root
 }

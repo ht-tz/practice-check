@@ -16,9 +16,10 @@ function removeNthFromEnd(head, n) {
 //虚拟头结点前进N个结点时，fastNode.next可推断不为空
         fast = fast.next
     }
+    fast = fast.next
 //slow和fast同时再走，此时fast走到末尾， 正好完全，slow走好走到要删除节点的前面， slow的下一个节点就要删除的节点
 //遍历直至fastNode.next = null， 即尾部节点。 此时slowNode指向倒数第n个节点。
-    while (fast.next !== null) {
+    while (fast) {
         fast = fast.next
         slow = slow.next
     }

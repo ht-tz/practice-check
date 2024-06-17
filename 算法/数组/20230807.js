@@ -1,64 +1,46 @@
-{
-    const generateMatrix = function (n) {
-        let startX = 0
-        let startY = 0
-        let loop = Math.floor(n / 2)
-        let mid = Math.floor(n / 2)
+function generateMatrix(n) {
+    if (n < 1) return []
 
-        let offset = 1
+    let res = new Array(n).fill(0).map(() => new Array(n).fill(0))
+    // 循环几圈
+    let loop = Math.floor(n / 2)
+    let mid = Math.floor(n / 2)
+    let count = 1
 
-        let count = 1
-        let nums = new Array(n).fill(0).map(() => new Array(n).fill(0))
+    let offset = 1
+    let startY = 0
+    let startX = 0
 
-        while (loop--) {
-            let row = startX
-            let col = startY
-            // left->right
-            for (; col < n - offset; col++) {
-                nums[row][col] = count++
-            }
-            // top->bottom
-            for (; row < n - offset; row++) {
-                nums[row][col] = count++
-            }
-            // right->left
-            for (; col > startX; col--) {
-                nums[row][col] = count++
-            }
-            // bottom->top
-            for (; row > startY; row--) {
-                nums[row][col] = count++
-            }
-
-            startX++
-            startY++
-            offset += 1
+    while (loop--) {
+        let row = startX
+        let col = startY
+        for (; col < n - offset; col++) {
+            res[row][col] = count++
+        }
+        for (; row < n - offset; row++) {
+            res[row][col] = count++
         }
 
-        if (n % 2 === 1) {
-            //奇数
-            nums[mid][mid] = count
+        for(; col>startX; col--) {
+            res[row][col] = count++
         }
-        return nums
-    }
-    console.log(generateMatrix(3))
 
-}
+        for(; row>startY; row--) {
+            res[row][col] = count++
 
-{
-    //移除元素
-    const  removeElement = function (n,arr) {
-         let slow = 0
-        for (let fast= 0; fast <arr.length; fast++) {
-            if (arr[fast] !== n) {
-                 arr[slow] = arr[fast]
-                 slow++
-            }
         }
-        return slow
+
+        startX++
+        startY++
+        offset++
     }
 
-    let a = [1,23,3,4,6,55]
 
-    console.log(removeElement(3,a))
+    if(n%2 === 1) {
+        res[mid][mid] = count++
+    }
+
+    return res
 }
+
+console.log(generateMatrix(4))

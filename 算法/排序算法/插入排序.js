@@ -21,4 +21,3 @@ function insertSort(arr) {
 
 let arr = [23, 13, 10, 76, 7, 4]
 console.log(insertSort(arr));
-

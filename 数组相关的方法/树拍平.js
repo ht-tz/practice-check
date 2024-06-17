@@ -37,7 +37,7 @@ const obj = {
         let array = obj instanceof Array ? obj : [obj]
         let res = []
         array.forEach(item => {
-        res.push(item)
+            res.push(item)
             if (item.children && item.children.length > 0) {
                 let data = getNodeArray(item.children)
                 res.push(...data)
@@ -47,7 +47,7 @@ const obj = {
         return res
     }
 
-    console.log(getNodeArray(obj))
+    // console.log(getNodeArray(obj))
 }
 
 {
@@ -67,6 +67,24 @@ const obj = {
         return res
     }
 
-    console.log(getNodeArray(obj))
+    // console.log(getNodeArray(obj))
 
+}
+
+{
+    function getNodeArray(obj) {
+        let res = []
+        let array = obj instanceof Array ? obj : [obj]
+        for (const item of array) {
+            res.push(item)
+            if (item.children && item.children.length > 0) {
+                res.push(...getNodeArray(item.children))
+            }
+            delete item.children
+        }
+        return res
+    }
+
+    let arr1 = getNodeArray(obj)
+    console.log(arr1);
 }

@@ -1,27 +1,24 @@
-function swap(arr,i) {
-    let temp = arr[i];
-    arr[i] = arr[i+1];
-    arr[i+1] = temp;
-}
-
-
-function bubble(arr) {
-    for(let j = arr.length - 1 ; j >= 0; j--) {
-        let flag = true; 
-        for(let i = 0; i < j; i++) {
-            if(arr[i] >arr[i+1]) {
-                swap(arr,i,i+1)
-                // flag = false
-            }
+function bubble(array) {
+    let len = array.length
+    for(let i = len - 1;i>=0;i--) {
+        let flag = true
+        for(let j = 0;j<i;j++) {
+              if(array[j] - array[j +1] >=0) {
+                  swap(j,j+1,array)
+                  flag = false
+              }
         }
-        console.log(arr);
-
-        //break用于完全结束一个循环，跳出循环体执行循环后面的语句
-        // if(flag) break;
+        if(flag) break
     }
-    return arr
+    return array
 }
 
+function swap(i, j, array) {
+    let temp = null
+     temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+}
 
-let arr = [10,8, 6, 5, 4, 1]
+let arr = [7, 65, 4, 3, 22, 100]
 console.log(bubble(arr))

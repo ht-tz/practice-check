@@ -1,35 +1,29 @@
-{function myinstanceof(left, right) {
-      
-     left = left.__proto__;
-     right = right.prototype; 
-    while(true) {
-        if(left === null) {
-            return false;
+function merge(intervals) {
+    // write code her
+    let res = [];
+    intervals.sort((a, b) => {
+        return a[0] - b[0];
+    });
+    for (let i = 0; i < intervals.length; i++) {
+        let cur = intervals[i];
+        if (res.length === 0) {
+            res.push(cur);
+            continue;
         }
-
-        if(left === right) {
-            return true;
+        let last = res[res.length - 1];
+        if (last[1] < cur[0]) {
+            // 没有交集，直接push
+            res.push(cur);
+        } else {
+            // 由交集
+            if (last[1] < cur[1]) {
+                //更新由边界
+                res[res.length - 1][1] = cur[1]
+            }
         }
-        left = left.__proto__
     }
+    return res;
 }
-console.log( myinstanceof([1,2,3],Array));
+let arr = [[10,30],[20,60],[80,100],[150,180]]
 
-}
-
-{
-     function mynew(fn,...args) {
-         let obj = {}
-          Object.setPrototypeOf(obj,  fn.prototype)
-          let result = fn.apply(obj,args)
-          return result instanceof Object ? result : obj;
-        }
-        
-
-        function Person(name) {
-            this.name = name
-        }
-
-        let per = mynew(Person,'zhangsan')
-        console.log(per);
-}
+console.log(merge(arr))

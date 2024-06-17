@@ -5,53 +5,27 @@ class ListNode {
     }
 }
 
-{
-    //移除链表
-    var removeElement = function (head, val) {
-        let dummyHead = new ListNode(0, head)
-        let cur = dummyHead
-        while (cur.next) {
-            if (cur.next.val === val) {
-                cur.next = cur.next.next
-                continue
-            }
-            cur = cur.next
-        }
-        return dummyHead.next
-    }
-}
 
-{
-    // 反转链表
-    const reverseList = (head) => {
-        if (!head && !head.next) return head
-        let temp = null
-        pre = null
-        cur = head
-        while (cur) {
-            temp = cur.next
-            cur.next = pre;
-            pre = cur
-            cur = temp
+var mergeTwoLists = function (list1, list2) {
+    let headList = new ListNode(0)
+    let head = headList
+    while (list2 && list1) {
+        if (list1.val < list2.val) {
+            head.next = list1
+            list1 = list1.next
+        } else{
+            head.next = list2
+            list2 = list2.next
         }
-        return pre
+        head =  head.next
+    }
+    if(list1) {
+         head.next = list1
     }
 
-}
-
-{
-    const reverseList = function (head) {
-        if (!head || !head.next) return head
-        let temp = null;
-        let pre = null;
-        let cur = head
-        while (cur) {
-            temp = cur.next
-            cur.next = pre
-            //完成反转开始移动
-            pre = cur
-            cur = temp
-        }
-        return  pre
+    if(list2) {
+         head.next = list2
     }
+
+    return headList.next
 }

@@ -1,18 +1,19 @@
-Function.prototype.myBind = function (context = window, ...args) {
-    //context 是bind传入的this,
-    //args是bind传入的各个参数
-    // this代表调用bind的函数
-    let self = this;
-    //返回一个函数，this作为实际调用传入的参数
-    let fBound = function (...thisArgs) {
-        // this instanceof fBound 表示构造函数的情况 new func.bind(obj)
-        // 当作为构造函数的时候，this，指向实例， 此时this instanceof fBound为true, 可以让实例获取来自绑定函数的值
-        // 当作为普通函数的时候，this默认指向window, false 将绑定函数的值指向context
-        return self.apply(
-            this instanceof fBound? this:context,
-            args.concat(thisArgs)
-        )
+Function.prototype.myApply = function (context, ...args) {
+    context = context || window
+    let symbol = Symbol('key')
+    context[symbol] = this
+    let result = context[symbol]([...args])
+    delete context[symbol]
+    return result
+}
+
+
+function myBind(context, ...args) {
+    if (typeof this !== 'function') throw Error("xxx")
+    var fn = this
+    var args1 = [...arguments].slice(1)
+    return function Fn(...args) {
+        let params = args1.concat(args)
+        return fn.myApply(this instanceof Fn ? this : context, params)
     }
-    fBound.prototype = Object.create(this.prototype)
-    return fBound
 }

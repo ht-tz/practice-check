@@ -1,0 +1,53 @@
+<!--
+ * @Author: htz
+ * @Date: 2024-05-30 21:04:35
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-05-30 23:48:02
+ * @Description: mutationobserver
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {}
+</style>
+
+<body>
+    <script>
+        const list = document.querySelector('ol')[0]
+        const config = {
+            attributes: true,
+            childList: true, // 观察目标节点的新增和删除
+            characterData: true, // 如果目标为characterData(一种抽象接口，具体可以是文本节点， 注释节点，一以及处理指令节点)，也要观察该节点的文本内容是否有变化
+            subtree: true, //  观察目标节点的所有后代节点
+        }
+        // MutationObserver 检测daomtree更改的能力
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                console.log(mutation);
+            })
+        })
+
+        observer.observe(list, config)
+
+
+    </script>
+    <section>
+        <h1>MutationObserver</h1>
+    </section>
+    <section>
+        <ol>
+            <li>Press enter</li>
+        </ol>
+    </section>
+    <div class="container">
+
+    </div>
+</body>
+
+</html>

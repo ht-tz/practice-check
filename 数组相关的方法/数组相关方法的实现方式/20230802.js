@@ -1,20 +1,20 @@
-Array.prototype.MyMap = function (fn,context) {
-    let arr = Array.prototype.slice.call(this)
-    for ( let i = 0; i <array.length ; i++) {
-        arr.push(fn.call(context, array[i],i,array))
+Array.prototype.myEvery = function (callback, thisArgs) {
+    let array = this,
+        flag = false
+    for (let j = 0; j < array.length; j++) {
+        if (callback.call(thisArgs, array[j], i, array)) {
+            flag = true
+            break
+        }
     }
-    return arr
+    return flag
 }
 
-Array.prototype.forEach = function (fn,context) {
-    let arr = Array.prototype.slice.call(this)
-    for ( let i = 0; i <arr.length ; i++) {
-      typeof fn==='function' &&  fn.call(context, arr[i],i,arr)
-    }
-}
 
-let arr = [1,2,3]
+let arr = [1, 2, 4, 4, -5]
 
-arr.forEach((el,index)=>{
-    console.log(el,index);
+let fa = arr.some((el, index) => {
+    return el < 0
 })
+
+console.log(fa);

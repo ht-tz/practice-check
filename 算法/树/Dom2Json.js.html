@@ -1,0 +1,95 @@
+<!--
+ * @Author: htz
+ * @Date: 2024-06-16 16:03:17
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-06-16 16:37:15
+ * @Description: 请填写简介
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <div id="app">
+    <span>
+      <a></a>
+    </span>
+    <span>
+      <a demo="123"></a>
+      <a></a>
+    </span>
+  </div>
+  <script>
+    // 目标
+    let s = {
+      "tag": "DIV",
+      "props": {
+        "id": "app"
+      },
+      "children": [
+        {
+          "tag": "SPAN",
+          "children": [
+            {
+              "tag": "A"
+            }
+          ]
+        },
+        {
+          "tag": "SPAN",
+          "children": [
+            {
+              "tag": "A",
+              "props": {
+                "demo": "123"
+              }
+            },
+            {
+              "tag": "A"
+            }
+          ]
+        }
+      ]
+    }
+
+
+
+    const node = document.getElementById("app");
+    console.log(node)
+    const res = dom2json(node);
+    console.log(res); // json
+    function dom2json(node) {
+      const vnode = {}
+      vnode.tag = node.tagName;
+
+      //处理属性
+      if (node?.attributes) {
+        vnode.props = {}
+        for (let attr of node.attributes) {
+          vnode.props[attr.name] = attr.value;
+        }
+      }
+
+      //处理子节点
+      const childrens = [...node.childNodes];
+      const filterChildren = childrens.filter(item => (item.nodeType === 1 //元素节点
+        ||
+        item.nodeType === 3// 非空白的文本节点
+        && item.textContent.trim() !== ""
+      ));
+
+      if (filterChildren.length > 0) {
+        vnode.children = filterChildren.map(el => {
+          return dom2json(el)
+        })
+      }
+      return vnode;
+    }
+  </script>
+</body>
+
+</html>

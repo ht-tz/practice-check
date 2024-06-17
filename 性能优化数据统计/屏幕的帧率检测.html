@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 检测屏幕的帧率
+
+    let lastTimer = performance.now()
+    let frame = 0
+    let lastFrameTime = performance.now()
+    let rafId
+    const loop = () => {
+        let now = performance.now()
+        let fs = (now - lastFrameTime)
+        lastFrameTime = now
+        let fps = Math.round(1000 / fs)
+        frame++
+        if (now - lastTimer > 1000) {
+            fps = Math.round(frame * 1000 / (now - lastTimer))
+            console.log(`${fps} fps`)
+            // 数据上报。
+            frame = 0
+            lastTimer = now
+           window.cancelAnimationFrame(rafId)
+        }
+      rafId =  window.requestAnimationFrame(loop)
+    }
+
+    loop()
+
+
+
+</script>
+
+</body>
+</html>
+
+/////
