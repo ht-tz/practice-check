@@ -13,7 +13,7 @@ var trap1 = function (height) {
             rh = Math.max(height[r], rh)
         }
 
-        for (let l = i - 1; l >= 0; l++) {
+        for (let l = i - 1; l >= 0; l--) {
             lh = Math.max(height[l], lh)
         }
 
@@ -36,11 +36,11 @@ var trap2 = function (height) {
 
     maxLeft[0] = height[0]
     // 记录每格柱子左边柱子的最大高度
-    for (let i = 0; i < len; i++) {
+    for (let i = 1; i < len; i++) {
         maxLeft[i] = Math.max(height[i], maxLeft[i - 1])
     }
     maxRight[len - 1] = height[len - 1]
-    for (let i = len - 1; i >= 0; i--) {
+    for (let i = len - 2; i >= 0; i--) {
         maxRight[i] = Math.max(height[i], maxRight[i + 1])
     }
 

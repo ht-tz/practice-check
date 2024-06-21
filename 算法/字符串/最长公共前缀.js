@@ -22,5 +22,5 @@ function longestCommonPrefix(strs) {
 
 let strs = ['aqqbca', 'abc', 'abca', 'acbc', 'abcc']
 
-console.log(longestCommonPrefix(strs)
+console.log(longestCommonPrefix(strs))
 
