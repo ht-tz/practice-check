@@ -1,9 +1,7 @@
 function fourSum(nums, target) {
-
     let array = []
     nums.sort((a, b) => a - b)
     for (let k = 0; k < nums.length; k++) {
-
         //剪枝处理, 推出循环
         if (nums[k] > target && nums[k] >= 0) break;
         if (k > 0 && nums[k] === nums[k - 1]) continue

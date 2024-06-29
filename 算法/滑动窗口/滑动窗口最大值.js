@@ -30,5 +30,37 @@ var maxSlidingWindow = function (nums, k) {
 
 };
 
-let arr = [1, 3, -1, -3, 5, 3, 6, 7]
-console.log(maxSlidingWindow(arr, 3))
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var maxSlidingWindow = function (nums, k) {
+    let len = nums.length
+    if (len == 0) return []
+
+    let stack = []
+    let res = []
+    for (let i = 0; i < len; i++) {
+        // 使得对队列头部保持最大值
+        while (stack.length && nums[i] >= nums[stack[stack.length - 1]]) {
+            stack.pop()
+        }
+        // 收集
+        stack.push(i)
+        // 删除越界元素 超出队列范围， 删除队头元素
+        if (k < i - stack[0] + 1) {
+            stack.shift()
+        }
+
+        //收集结果
+        if (i >= k - 1) {
+            res.push(nums[stack[0]])
+        }
+    }
+    return res
+};
+
+let arr = [7, 2, 4]
+console.log(maxSlidingWindow(arr, 2))

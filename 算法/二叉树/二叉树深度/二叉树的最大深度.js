@@ -39,5 +39,4 @@ var maxDepth = function (root) {
     count++
   }
   return count
-  return count
 }

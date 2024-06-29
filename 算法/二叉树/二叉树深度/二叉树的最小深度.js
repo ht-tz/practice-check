@@ -34,6 +34,5 @@ function minDepth(root) {
 
         count++
     }
-
     return count
 }

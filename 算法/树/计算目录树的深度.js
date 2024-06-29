@@ -2,29 +2,29 @@
  * @Author: htz
  * @Date: 2024-06-16 16:48:14
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-06-16 17:29:12
+ * @LastEditTime: 2024-06-28 18:31:29
  * @Description: 计算目录树的深度
  */
 const tree = {
-  name: 'root',
-  children: [
-    { name: '叶子1-1' },
-    { name: '叶子1-2' },
-    {
-      name: '叶子2-1',
-      children: [
+    name: 'root',
+    children: [
+        { name: '叶子1-1' },
+        { name: '叶子1-2' },
         {
-          name: '叶子3-1',
-          children: [
-            {
-              name: '叶子4-1',
-              children: [{}],
-            },
-          ],
+            name: '叶子2-1',
+            children: [
+                {
+                    name: '叶子3-1',
+                    children: [
+                        {
+                            name: '叶子4-1',
+                            children: [{}],
+                        },
+                    ],
+                },
+            ],
         },
-      ],
-    },
-  ],
+    ],
 }
 //
 // function getTreeDepth(tree) {
@@ -61,22 +61,22 @@ const tree = {
 // 返回 level - 1，即为目录树的深度。
 
 function getTreeDepth(tree) {
-  if (!tree) return 0
-  let maxLevel = 0
-  const dfs = (node, count) => {
-    // 退出条件, 到底了，节点了就是退出条件
-    if (!node.children || node.children.length === 0) {
-      maxLevel = Math.max(count, maxLevel)
-      return
+    if (!tree) return 0
+    let maxLevel = 0
+    const dfs = (node, count) => {
+        // 退出条件, 到底了，节点了就是退出条件
+        if (!node.children || node.children.length === 0) {
+            maxLevel = Math.max(count, maxLevel)
+            return
+        }
+        // 遍历子节点
+        let children = node.children
+        for (const item of children) {
+            dfs(item, count + 1)
+        }
     }
-    // 遍历子节点
-    let children = node.children
-    for (const item of children) {
-      dfs(item, count + 1)
-    }
-  }
-  dfs(tree, 1)
-  return maxLevel
+    dfs(tree, 1)
+    return maxLevel
 }
 
 console.log(getTreeDepth(tree))

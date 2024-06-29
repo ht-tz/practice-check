@@ -16,5 +16,5 @@ var countSubstrings = function (s) {
         }
     }
     return res
-
 };
+
