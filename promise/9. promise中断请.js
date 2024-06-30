@@ -39,7 +39,7 @@ class AbortPromise {
 
 const p1 = Promise.resolve(1)
 
-const delay = (time) => new Promise((resolve) => setTimeout(resolve, time))c
+const delay = (time) => new Promise((resolve) => setTimeout(resolve, time))
 
 const abortPromise = new AbortPromise(p1)
 abortPromise
