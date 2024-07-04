@@ -1,0 +1,37 @@
+<mxfile host="65bd71144e">
+    <diagram id="MFB-b14tFFQ6tWN-RS4w" name="Page-1">
+        <mxGraphModel dx="873" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="javaScript探针" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="截图插件" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="420" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="录屏插件" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="420" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="加密工具" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="420" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&amp;nbsp; Vue全家桶，&amp;nbsp; webpack打包工具" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="540" width="370" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Node js后端服务" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="540" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="消息队列" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="650" width="370" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="mysql" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="510" y="650" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="前端可视化数据平台" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="750" width="520" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
