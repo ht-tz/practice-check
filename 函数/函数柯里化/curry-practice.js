@@ -14,9 +14,9 @@ function currying(fn) {
           if(args.length < fn.length) {
               return function (...arg) {
                   return currieFn(...args.concat([...arg]))
+                  //参数缓存够就去执行函数
               }
           } else {
-                //参数缓存够就去执行函数
               return fn(...args)
           }
     }
