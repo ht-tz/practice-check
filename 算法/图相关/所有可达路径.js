@@ -22,8 +22,8 @@
 
 // 邻接矩阵你=
 var allPath = function (n, m) {
-
     let res = []
+
     let path = []
     // cur 当前遍历的节点， end到达的节点
     const dfs = function (graph, cur, end) {

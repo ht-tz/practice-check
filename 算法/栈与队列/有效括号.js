@@ -1,5 +1,6 @@
 // 有效括号
 {
+    //先进来一个，存储映射 下次进来pop()  === 当前值
     const isValid = function (s) {
         const stack = []
         for (let i = 0; i < s.length; i++) {
@@ -8,7 +9,6 @@
                 case '(':
                     stack.push(')');
                     break;
-
                 case '[':
                     stack.push(']')
                     break;
@@ -21,7 +21,10 @@
         }
         return stack.length === 0
     }
+    let s = "{}()"
+    console.log(isValid(s))
 }
+
 
 {
     const isValid = function (s) {
