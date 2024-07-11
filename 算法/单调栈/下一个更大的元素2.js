@@ -1,12 +1,7 @@
-const { setDevtoolsHook } = require("vue")
 
-
-for (let i = 0; i < 6; i++) {
-    console.log(i % 12)
+for (let i = 0; i < 12; i++) {
+    console.log(i % 6)
 }
-
-
-console.log(i)
 
 
 /**
@@ -18,7 +13,7 @@ var nextGreaterElements = function (nums) {
     let stack = []
     let res = Array(len).fill(-1)
     for (let i = 0; i < len * 2; i++) {
-        while (stack.length && nums[i / len] > nums[stack[stack.length - 1]]) {
+        while (stack.length && nums[i % len] > nums[stack[stack.length - 1]]) {
             let index = stack.pop()
             res[index] = nums[i % len]
         }
@@ -26,3 +21,4 @@ var nextGreaterElements = function (nums) {
     }
     return res
 }
+console.log(nextGreaterElements([1, 2, 1]))

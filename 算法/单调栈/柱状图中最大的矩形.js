@@ -8,12 +8,12 @@ function largestRectangleArea(heights) {
         // 向左寻找 最小高度
         for (; left >= 0; left--) {
             if (heights[left] < heights[i]) {
-                break;
+                break
             }
         }
         for (; right < heights.length; right++) {
             if (heights[right] < heights[i]) {
-                break;
+                break
             }
         }
         let w = right - left - 1
@@ -36,6 +36,7 @@ function largestRectangleArea(heights) {
         let t = i - 1
         //比当前值大就记录
         while (t >= 0 && heights[t] >= heights[i]) {
+            // 具体来说，当 heights[t] >= heights[i] 时，我们知道 t 位置的柱子不能作为 i 位置柱子的左边界，所以我们可以直接跳到 t 的左边第一个小于 heights[t] 的柱子，也就是 maxLeft[t] 位置。
             t = maxLeft[t]
         }
         // 不满足的左边第一个就是
@@ -60,7 +61,6 @@ function largestRectangleArea(heights) {
     return sum
 }
 
-
 // 单调栈
 //  找每个柱子左右侧的第一个高度值小于该柱子的柱子
 //         单调栈：栈顶到栈底：从大到小（每插入一个新的小数值时，都要弹出先前的大数值）
@@ -77,13 +77,15 @@ function largestRectangleArea(heights) {
 
     heights.push(0)
     heights.unshift(0)
-    stack.push(0);
+    stack.push(0)
     // 第一个元素已经入栈，从第一个元素开始遍历
     for (let i = 1; i < heights.length; i++) {
         //当前元素大于栈顶元素
-        if (heights[i] > heights[stack.at((-1))]) {  //情况一
+        if (heights[i] > heights[stack.at(-1)]) {
+            //情况一
             stack.push(i)
-        } else if (heights[i] == heights[stack.at(-1)]) { // 情况2
+        } else if (heights[i] == heights[stack.at(-1)]) {
+            // 情况2
             stack.pop()
             stack.push(i)
         } else if (heights[i] < heights[stack.at(-1)]) {
@@ -107,5 +109,3 @@ function largestRectangleArea(heights) {
     }
     return sum
 }
-
-console.log(largestRectangleArea([2, 1, 5, 6, 2, 3]))

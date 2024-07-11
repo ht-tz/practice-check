@@ -150,13 +150,14 @@ function maxArea(heights) {
     const width = right - left;
     const area = height * width;
     maxArea = Math.max(maxArea, area);
+    //移动小的指针，移动较大指针一定会，面积减少，宽短一直在减少
+    if (heights[left] < heights[right]) {
+      left++;
+    } else {
+      right--;
+    }
   }
-  //移动小的指针，移动较大指针一定会，面积减少，宽短一直在减少
-  if (heights[left] < heights[right]) {
-    left++;
-  } else {
-    right--;
-  }
+
   return maxArea;
 }
 

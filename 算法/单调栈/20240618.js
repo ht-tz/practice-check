@@ -1,24 +1,26 @@
+// 接雨水
 var trap = function (height) {
-    if (height.length <= 2) return 0
-    let len  = height.length
-    let maxLeft = new Array(len).fill(0)
-    let maxRight = new Array(len).fill(0)
-    maxLeft[0] = height[0]
+    let len = height.length
+    if (height.length === 0) {
+        return 0
+    }
+    let res = 0
     for (let i = 1; i < len; i++) {
-        maxLeft[i] = Math.max(height[i], maxLeft[i - 1])
-    }
-    maxRight[len - 1] = height[len - 1]
+        // 第一个元素和最后一个元素是不参与接雨水的
+        if (i == 0 || i === len - 1) continue
+        let ml = 0
+        let mr = 0
+        // 向左搜索
+        for (let k = i; k >= 0; k--) {
+            ml = Math.max(ml, height[k])
+        }
 
-    for (let i = len - 2; i >0; i--) {
-        maxRight[i] = Math.max(height[i], maxRight[i +  1])
+        // 向右边去搜索
+        for (let k = i; k < len; k++) {
+            mr = Math.max(mr, height[k])
+        }
+        res += Math.min(ml, mr) - height[i]
     }
-    let sum = 0
-    for (let i = 0; i < len; i++) {
-        let h = Math.min(maxLeft[i], maxRight[i]) - height[i]
-        if (h > 0) sum += h
-    }
-    return sum
+    return res
 }
-
-let max = [4,2,0,3,2,5]
-console.log(trap(max))
+console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))

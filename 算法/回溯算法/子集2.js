@@ -6,7 +6,6 @@ var subsetsWithDup = function (nums) {
     let res = []
     let path = []
     let len = nums.length
-    let used = new Array(len).fill(false)
     // 去重必须要排序
     nums.sort((a, b) => a - b)
     let used = new Array(len).fill(false)

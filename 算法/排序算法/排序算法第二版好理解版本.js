@@ -21,7 +21,7 @@ function quickSort(arr, l, r) {
         arr[j] = temp
     }
 
-    //相等之后, 交换基准元素和相遇位置的元素 i 
+    //相等之后, 交换基准元素和相遇位置的元素 i
     //基准位置等于相遇元素
     arr[l] = arr[i]
     ///相遇位置等于基元素
@@ -34,6 +34,6 @@ function quickSort(arr, l, r) {
 
 }
 
-let array = [3, 2, 1, 5, 6, 4]
+let array = [6,5,4,3,2,1]
 quickSort(array, 0, array.length - 1)
 console.log(array);
