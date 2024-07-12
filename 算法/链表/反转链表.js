@@ -22,7 +22,7 @@
             //开始反转, 改变方向了
             cur.next = pre
             //开始移动 pre,cur向后移动一位
-            pre = cur.next;
+            pre = cur;
             //当前节点向后移一位， cur.next 因为此时的cur.next->指向了pre,所以需要临时指针 temp
             cur = temp;
         }

@@ -71,6 +71,8 @@ var combinationSum21 = function (candidates, target) {
             path.pop()
             used[i] = false
         }
-
     }
+
+    return  res
 };
+console.log(combinationSum2([10, 1, 2, 7, 6, 1, 5], 8))
