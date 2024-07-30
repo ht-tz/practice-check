@@ -24,10 +24,10 @@ function curried(fn) {
                 return curry(...args.concat([...thisArg]));
             }
         } else {
-            fn(...args)
+            return fn(...args)
         }
     }
 }
 
-const sum = curries(getSum)
+const sum = curried(getSum)
 console.log(sum(1)(2)(3));

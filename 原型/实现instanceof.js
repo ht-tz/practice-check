@@ -6,43 +6,43 @@
     3.instance.[__proto__ ...] === instance.constructor.prototype
      */
 
-    function  instanceOf(left, right) {
+    function instanceOf(left, right) {
         //left,instanceof右表达式
-         var O = right.prototype;
-         //获取右表达式的原型的显示原型
-        left = left.__proto__;
+        var O = right.prototype
+        //获取右表达式的原型的显示原型
+        left = left.__proto__
         while (true) {
             //  如果查找完整个原型链还找不到prototype属性那么就返回null
             //Object.prototype.__proto__ === null
             if (left === null) {
-                return false;
+                return false
             }
-            if(O === left) {
-            return true
+            if (O === left) {
+                return true
             }
             //以上两个条件都不符合就继续向上找
-            left = left.__proto__;
+            left = left.__proto__
         }
-
     }
 
-    function myinstanceof(left,right) {
-        let o = right.prototype;
-        left = left.__proto__;
+    function myinstanceof(left, right) {
+        let o = right.prototype
+        left = left.__proto__
         while (true) {
-             if (left === null){
-                 return false;
-             } if (o === left) {
-                  return true
+            if (left === null) {
+                return false
             }
-             left= left.__proto__;
+            if (o === left) {
+                return true
+            }
+            left = left.__proto__
         }
     }
-    function D(){}
-    function C(){}
+    function D() {}
+    function C() {}
     var o = new C()
 
-    console.log(instanceOf(o,D))
-    console.log(instanceOf(o,C))
+    console.log(instanceOf(o, D))
+    console.log(instanceOf(o, C))
     console.log({} instanceof Object)
 }

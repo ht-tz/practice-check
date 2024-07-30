@@ -116,7 +116,7 @@ function objToStrMap(obj) {
  * '[object Array]': 'array',
  * '[object RegExp]': 'regExp',
  * '[object Function]': 'function',
- * '[object Promise]': 'promise',
+ * '[object Promise]': 'promise 高频手写',
  * '[object GeneratorFunction]': 'generatorFunction',
  * '[object Null]': 'null',
  *

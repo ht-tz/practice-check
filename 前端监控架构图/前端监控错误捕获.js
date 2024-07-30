@@ -22,8 +22,8 @@ try {
 
 try {
     new Promise((res, rej) => {
-        rej('promise reject error')
-// throw new Error('promise throw error')
+        rej('promise 高频手写 reject error')
+// throw new Error('promise 高频手写 throw error')
     })
 } catch (e) {
     console.log('catch error:', e)

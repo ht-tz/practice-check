@@ -25,7 +25,7 @@ function minDepth(root) {
         let size = queue.length
         while (size--) {
             let node = queue.shift()
-            if (node.left === null || node.right === null) {
+            if (node.left === null && node.right === null) {
                 return count
             }
             if (node.right) queue.push(node.right)

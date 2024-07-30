@@ -28,7 +28,6 @@ console.timeEnd()}
 
 {
     //立即执行函数
-    5   
     
     function debounce1(fn, wait, immediate) {
         let timer = null;

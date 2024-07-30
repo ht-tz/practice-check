@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <span>
+            <a></a>
+        </span>
+        <span>
+            <a demo="123"></a>
+            <a></a>
+        </span>
+    </div>
+    <script>
+        let node = document.getElementById("app")
+
+        function dom2json(node) {
+            const vnode = {}
+            vnode.tag = node.tagName
+            // 处理属性
+            if (node?.attributes) {
+                const attributes = node.attributes
+                for (let attr of attributes) {
+                    vnode.props[attr.name] = attr.value
+                }
+            }
+            if (node?.childNodes) {
+                const childNodes = [...node.childNodes]
+                const filterChildNodes = childNodes.filter(item => item.nodeType === 1
+                    || item.nodeType === 3
+                    && item.textContent.trim() !== " ")
+
+                if (filterChildNodes.length > 0) {
+                    vnode.children = filterChildNodes.map(el => {
+                        return dom2json(el)
+                    })
+                }
+
+            }
+            return vnode
+        }
+
+    </script>
+</body>
+
+</html>

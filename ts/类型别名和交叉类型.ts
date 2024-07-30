@@ -26,8 +26,6 @@ interface P1 {
 interface P1 {
     x: number,
     y: number,
-    id: string | number
-}
-
+ }
 
 

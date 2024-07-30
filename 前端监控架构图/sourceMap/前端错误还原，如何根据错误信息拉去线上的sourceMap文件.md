@@ -14,7 +14,7 @@ window.addEventListener('error', function(event) {
 });
 
 window.addEventListener('unhandledrejection', function(event) {
-    console.error('Unhandled promise rejection: ', event);
+    console.error('Unhandled promise 高频手写 rejection: ', event);
 });
 ```
 

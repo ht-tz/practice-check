@@ -8,11 +8,9 @@
 //     return str.slice(0, len)
 // }
 {
-
     function reverseLeftWords(str, n) {
-
         function reserve(strArr, start, end) {
-            let temp;
+            let temp
             while (start < end) {
                 temp = strArr[start]
                 strArr[start] = strArr[end]
@@ -20,7 +18,6 @@
                 start++
                 end--
             }
-
         }
 
         let strArr = str.split('')
@@ -32,20 +29,18 @@
         console.log(strArr.join(''))
     }
 
-
     let str = '12345'
     reverseLeftWords(str, 2)
-
 }
 
 const re = (str) => {
-    let l = 0;
-    let s = str.split("");
+    let l = 0
+    let s = str.split('')
     let len = s.length
     let r = len - 1
 
-    let temp;
-    while (l<r){
+    let temp
+    while (l < r) {
         temp = s[l]
         s[l] = s[r]
         s[r] = temp

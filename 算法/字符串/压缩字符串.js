@@ -1,18 +1,33 @@
 //用行程长度编码（Run-Length Encoding）算法来压缩字符串
 function compressString(str) {
-    let compressed = ""
+    let compressed = ''
     let count = 1
     for (let i = 1; i < str.length; i++) {
-           if(str[i -1] === str[i]) {
-                count +=1
-           } else {
-               compressed += str[i -1] + count
-                count = 1
-           }
+        if (str[i - 1] === str[i]) {
+            count += 1
+        } else {
+            compressed += str[i - 1] + count
+            count = 1
+        }
     }
     compressed += str[str.length - 1] + count
     return compressed
 }
 
-console.log(compressString('aabbbcccc')); // "a2b3c4"
-console.log(compressString('abc')); // "a1b1c1"
+console.log(compressString('aabbbcccc')) // "a2b3c4"
+console.log(compressString('abc')) // "a1b1c1"
+function compressString(str) {
+    let nstr = ''
+    let count = 0
+
+    for (let i = 0; i < str.length; i++) {
+        if (str[i - 1] == str[i]) {
+            count++
+        } else {
+            nstr += str[i - 1] + count
+            count = 1
+        }
+    }
+    nstr += str[str.length - 1] + count
+    return nstr
+}

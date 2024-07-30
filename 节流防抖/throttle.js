@@ -13,6 +13,30 @@
         }
     }
 }
-{
 
+
+function RAFThrottle(fn) {
+    let tracking = false
+    return function () {
+        if (!tracking) {
+            tracking = true
+            window.requestAnimationFrame(() => {
+                fn.apply(this, arguments)
+                tracking = false
+            })
+        }
+    }
+}
+
+function throttle(fn, immediate = false, wait = 0) {
+    let pre = +Date.now()
+    return function (...args) {
+        let now = +Date.now()
+        if (immediate) {
+            fn.apply(this, args)
+        } else if (now - pre > wait) {
+            fn.apply(this, args)
+            pre = now
+        }
+    }
 }

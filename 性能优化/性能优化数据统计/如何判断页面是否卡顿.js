@@ -1,3 +1,4 @@
+2
 /**
  * @descript  判断页面是否卡顿
  * @param FPSList  采集的帧率

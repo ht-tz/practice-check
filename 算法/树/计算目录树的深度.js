@@ -2,7 +2,7 @@
  * @Author: htz
  * @Date: 2024-06-16 16:48:14
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-06-28 18:31:29
+ * @LastEditTime: 2024-07-26 17:10:24
  * @Description: 计算目录树的深度
  */
 const tree = {
@@ -26,24 +26,24 @@ const tree = {
         },
     ],
 }
-//
-// function getTreeDepth(tree) {
-//   if (!tree) return 0
-//   let stack = [tree]
-//   let count = 0
-//   while (stack.length) {
-//     let size = stack.length
-//     while (size--) {
-//       const node = stack.shift()
-//       if (node.children && node.children.length) {
-//         // 这里需要将子节点也入栈，因为可能存在子节点的子节点
-//         stack.push(...node.children)
-//       }
-//     }
-//     count++
-//   }
-//   return count
-// }
+
+function getTreeDepth(tree) {
+    if (!tree) return 0
+    let stack = [tree]
+    let count = 0
+    while (stack.length) {
+        let size = stack.length
+        while (size--) {
+            const node = stack.shift()
+            if (node.children && node.children.length) {
+                // 这里需要将子节点也入栈，因为可能存在子节点的子节点
+                stack.push(...node.children)
+            }
+        }
+        count++
+    }
+    return count
+}
 // console.log(getTreeDepth(tree))
 //如果目录树为空，返回 0。
 // 创建一个队列，并将根节点入队。
