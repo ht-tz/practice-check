@@ -18,11 +18,11 @@ function minDepth(root) {
 
 function minDepth(root) {
     if (root == null) return 0
-
     let queue = [root]
     let count = 0
     while (queue.length) {
         let size = queue.length
+        count++ // 注意续需要要加1
         while (size--) {
             let node = queue.shift()
             if (node.left === null && node.right === null) {
@@ -31,8 +31,6 @@ function minDepth(root) {
             if (node.right) queue.push(node.right)
             if (node.left) queue.push(node.left)
         }
-
-        count++
     }
     return count
 }

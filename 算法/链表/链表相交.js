@@ -4,23 +4,23 @@
  */
 
 function getListLen(head) {
-     let len = 0;
-     let cur = head
-    while(cur)  {
-         len ++;
-         cur = cur.next;
+    let len = 0;
+    let cur = head
+    while (cur) {
+        len++;
+        cur = cur.next;
     }
     return len
 }
 
-function getIntersectionNode(headA,headB) {
+function getIntersectionNode(headA, headB) {
     let curA = headA
     let curB = headB
 
     let lenA = getListLen(headA)
-    let lenB  = getListLen(headB)
+    let lenB = getListLen(headB)
 
-    if(lenA<lenB) {
+    if (lenA < lenB) {
         // 交换变量注意加 “分号” ，两个数组交换变量在同一个作用域下时
         // 如果不加分号，下面两条代码等同于一条代码: [curA, curB] = [lenB, lenA]
 
@@ -33,16 +33,36 @@ function getIntersectionNode(headA,headB) {
 
     //让curA和curB在统一起点上
     while (gap--) {
-        curA  = curA.next
+        curA = curA.next
     }
 
     //遍历A和B 遇到相同直接返回
-    while(curA && curB) {
-        if(curA === curB) {
+    while (curA && curB) {
+        if (curA === curB) {
             return curA
         }
         curA = curA.next
         curB = curB.next
     }
     return null;
+}
+
+function getIntersectionNode(headA, headB) {
+    let p1 = headA
+    let p2 = headB
+    while (p1 !== p2) {
+        // 走末尾转b
+        if (p1 !== null) {
+            p1 = headA
+        } else {
+            p1 = p1.next
+        }
+
+        if (p2 !== null) {
+            p2 = headB
+        } else {
+            p2 = p2.next
+        }
+    }
+    return p1
 }

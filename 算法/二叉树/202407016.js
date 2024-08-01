@@ -102,9 +102,7 @@ function postorderTraversal(root) {
 }
 
 function postorderTraversal(root) { 
-    if (!root) {
-         retunn[] 
-    }
+    if (!root) return []
     let stack = [root] 
     let res = [] 
     while (stack.length) {

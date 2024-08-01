@@ -1,34 +1,45 @@
-class ListNode {
-    constructor(val, next) {
-        this.val = (val === undefined ? 0 : val)
-        this.next = (next === undefined ? null : next)
-    }
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
+function mergeKLists(lists) {
+    if (lists.length === 0) return null;
+    return mergeList(lists, 0, lists.length - 1);
 }
 
-var mergeKLists = function (lists) {
-    if (lists.length === 0) return
+function mergeList(lists, left, right) {
+    //只剩下一个元素了，说明分治到头了，直接返回
+    if (left === right) return lists[left];
+    const mid = left + ((right - left) >> 1);
+    const leftList = mergeList(lists, left, mid);
+    const rightList = mergeList(lists, mid + 1, right);
+    return mergeTwoLists(leftList, rightList);
+}
 
-    const mergeTwoLists = (l1, l2) => {
-        if (!l1) return l2
-        if (!l2) return l1
+function mergeTwoLists(l1, l2) {
+    if (!l1) return l2;
+    if (!l2) return l1;
+    let head = new ListNode(0);
+    let current = head;
 
-        if (l1.val < l2.val) {
-            l1.next = mergeTwoLists(l1.next, l2)
-            return l1
+    while (l1 && l2) {
+        if (l1.val <= l2.val) {
+            current.next = l1;
+            l1 = l1.next;
         } else {
-            l2.next = mergeTwoLists(l1, l2.next)
-            return l2
+            current.next = l2;
+            l2 = l2.next;
         }
-
+        current = current.next;
     }
+    current.next = l1 || l2;
 
-    const mergeListsHelper = (lists, start, end) => {
-        if (start === end) return lists[start]
-        const mid = Math.floor((start + end) / 2)
-        const left = mergeListsHelper(lists, start, mid)
-        const right = mergeListsHelper(lists, mid + 1, end)
-        return mergeTwoLists(left, right)
-    }
-
-    return mergeListsHelper(lists, 0, lists.length - 1)
+    return head.next;
 }

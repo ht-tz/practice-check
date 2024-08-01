@@ -13,5 +13,5 @@ const sum = (a, b) => {
     return a + b
 }
 
-let fb = memorize(sum(3,45))
-console.log(fb);
+let fb = memorize(sum(3,8))
+console.log(fb(2));

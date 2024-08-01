@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽的功能</title>
+</head>
+<body>
+<div id="box" style="width: 200px;height: 200px;background-color: red;position: absolute;left: 0;top: 0;">
+
+</div>
+<script>
+    let box = document.getElementById('box')
+    let moving = false
+    let xBuffer = 0
+    let yBuffer = 0
+
+    document.addEventListener('mousedown', function (e) {
+
+        if (moving && e.target.id !== 'box') return
+        const {left, top} = box.style
+        const {clientX, clientY} = e
+
+
+        moving = true
+
+        xBuffer = clientX - Number(left.substr(0, left.indexOf('px')))
+        yBuffer = clientY - Number(top.substr(0, top.indexOf('px')))
+    })
+
+    document.addEventListener('mousemove', function (e) {
+        if (!moving) return
+        // 灭有移动就return
+        const {clientX, clientY} = e
+        box.style.left = (clientX - xBuffer) + 'px'
+        box.style.top = (clientY - yBuffer) + 'px'
+    })
+
+    document.addEventListener('mouseup', function (e) {
+        if (!moving) return
+        moving = false
+    })
+
+</script>
+</body>
+</html>

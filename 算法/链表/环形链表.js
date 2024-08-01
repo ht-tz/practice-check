@@ -4,7 +4,7 @@ var hasCycle = function (head) {
     let fast = head
     while (fast && fast.next) {
         fast = fast.next.next
-        slow.next
+        slow.next = slow.next
         if (slow == fast) return true
     }
     return fast
