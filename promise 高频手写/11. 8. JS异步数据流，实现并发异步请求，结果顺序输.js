@@ -18,3 +18,4 @@ Promise.all(promises).then(results => {
 }).catch(err=>{
     console.log(err)
 })
+

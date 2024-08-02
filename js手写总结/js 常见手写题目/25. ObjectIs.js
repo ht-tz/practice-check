@@ -10,7 +10,7 @@
  * 1. 类似于3等
  * 2. 处理0 和 NaN不同
  */
-function ObjectIs(a, b) {
+function ObjectIs(x, y) {
     if (x === y) {
         //  针对 +0 和 -0 的特殊情况 false
         // -Infinity!== Infinity
