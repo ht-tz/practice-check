@@ -20,7 +20,7 @@ function processTask(...tasks) {
             })
         },
         pause() {
-            isRuning = false
+            isRunning = false
         }
     }
 }
