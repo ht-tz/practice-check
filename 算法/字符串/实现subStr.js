@@ -1,23 +1,23 @@
-function strStr(haystack, needle) {
-  let m = haystack.length
-  let n = needle.length
-  //边界条件， i+n>m 的话没意义了, 因为i+n>m 的时候，从i到m的字符串肯定不存在（为个数不够了）
-  for (let i = 0; i + n <= m; i++) {
-    let flag = true
+function mySubstring(str, start, end) {
+    // null  undefined 0
+    start = Math.max(0, start || 0)
+    end = Math.min(str.length, end || str.length)
 
-    let j = 0
-    while (j < n) {
-      if (!haystack[i + j] == needle[j]) {
-        flag = false
-        // 这次没有匹配上的话， 继续匹配下一轮
-        break
-      }
+    // start > end交换
+    if (start > end) {
+        [start, end] = [end, start];
     }
-    //匹配成功的话 会返回i起始点
-    if (flag) {
-      return i
+
+    // 循环构建中字符串
+    let res = ""
+    for (let i = start; i < end; i++) {
+        res += str[i]
+
     }
-  }
-  return -1
+    return res
 }
-console.log(strStr('hello', 'll'))
+
+let str = "Hello, World!";
+console.log(mySubstring(str, 7, 12)); // 输出: "World"
+console.log(mySubstring(str, 7));     // 输出: "World!"
+console.log(mySubstring(str, 12, 7)); // 输出: "World"

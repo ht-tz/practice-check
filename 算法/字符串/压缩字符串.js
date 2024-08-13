@@ -31,3 +31,22 @@ function compressString(str) {
     nstr += str[str.length - 1] + count
     return nstr
 }
+
+
+// 还原被压缩的字符串
+function decompressString(str) {
+    let res = ""
+    for (let i = 0; i < str.length; i++) {
+        if (!isNaN(str[i])) {
+            res += str[i - 1].repeat(str[i])
+        }
+    }
+    return res
+}
+
+console.log(decompressString("a2b3c4")) // "aabbbcccc")
+
+//全局函数 isNaN() 用于检查其参数是否是非数字值， 比较前会先转换为数字在进行判断
+console.log(isNaN('a')) //true
+console.log(Number.isNaN("a")) //false  更加的严格，不会进行类型转换
+
