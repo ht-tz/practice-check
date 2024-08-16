@@ -24,26 +24,26 @@ const task = (timer, light, callback) => {
         callback()
     }, timer)
 }
-
-// 解决方案： 递归让一个灯亮开始无限循环
-
-const step = () => {
-    task(3000, 'red', () => {
-        task(1000, 'green', () => {
-            task(2000, 'yellow', step)
-        })
-    })
-}
-
-step()
-
-const step = () => {
-    task(3000, 'red')
-        .then(() => task(2000, 'yellow'))
-        .then(() => task(1000, 'green'))
-        .then(step)
-}
-step()
+//
+// // 解决方案： 递归让一个灯亮开始无限循环
+//
+// const step = () => {
+//     task(3000, 'red', () => {
+//         task(1000, 'green', () => {
+//             task(2000, 'yellow', step)
+//         })
+//     })
+// }
+//
+// step()
+//
+// const step = () => {
+//     task(3000, 'red')
+//         .then(() => task(2000, 'yellow'))
+//         .then(() => task(1000, 'green'))
+//         .then(step)
+// }
+// step()
 
 const taskRunner = async () => {
     await task(3000, 'red')
