@@ -10,5 +10,5 @@ Array.prototype.myReduce = function (fn, initValue) {
 }
 
 let arr = [1,23,4,4]
- let a =  arr.myReduce((pre, cur) => pre + cur, 0)
+ let a =  arr.myReduce((pre, cur) => pre + cur, 10)
  console.log(a)
